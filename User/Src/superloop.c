@@ -14,7 +14,8 @@
 // CubeMx-generated header files:
 #include "stm32u0xx_hal.h"
 // User-generated header files:
-
+#include "blink.h"
+#include "uart.h"
 
 /*!
  * @brief This function should be called before the superloop.
@@ -22,6 +23,8 @@
 void
 superloop_init (void)
 {
+    uart_init();
+    blink_init();
 }
 
 /*!
@@ -30,4 +33,6 @@ superloop_init (void)
 void
 superloop_run (void)
 {
+    blink_superloop();
+    uart_superloop();
 }

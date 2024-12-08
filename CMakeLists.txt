@@ -49,6 +49,10 @@ target_link_directories(${CMAKE_PROJECT_NAME} PRIVATE
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user sources here
     User/Src/superloop.c
+    User/Src/blink.c
+    User/Src/uart.c
+    User/Src/ring_buffer.c
+    User/Src/assert.c
 )
 
 # Add include paths
