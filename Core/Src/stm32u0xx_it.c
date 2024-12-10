@@ -55,8 +55,11 @@
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
+extern DMA_HandleTypeDef hdma_usart3_rx;
+extern DMA_HandleTypeDef hdma_usart3_tx;
 extern DMA_HandleTypeDef hdma_usart4_rx;
 extern DMA_HandleTypeDef hdma_usart4_tx;
+extern UART_HandleTypeDef huart3;
 extern UART_HandleTypeDef huart4;
 /* USER CODE BEGIN EV */
 
@@ -165,9 +168,38 @@ void DMA1_Channel2_3_IRQHandler(void)
 
   /* USER CODE END DMA1_Channel2_3_IRQn 0 */
   HAL_DMA_IRQHandler(&hdma_usart4_tx);
+  HAL_DMA_IRQHandler(&hdma_usart3_rx);
   /* USER CODE BEGIN DMA1_Channel2_3_IRQn 1 */
 
   /* USER CODE END DMA1_Channel2_3_IRQn 1 */
+}
+
+/**
+  * @brief This function handles DMAMUX_OVR_IT + DMA1 channel 4 to 7 +  DMA2 channel 1 to 5.
+  */
+void DMA1_Ch4_7_DMA2_Ch1_5_DMAMUX_OVR_IRQHandler(void)
+{
+  /* USER CODE BEGIN DMA1_Ch4_7_DMA2_Ch1_5_DMAMUX_OVR_IRQn 0 */
+
+  /* USER CODE END DMA1_Ch4_7_DMA2_Ch1_5_DMAMUX_OVR_IRQn 0 */
+  HAL_DMA_IRQHandler(&hdma_usart3_tx);
+  /* USER CODE BEGIN DMA1_Ch4_7_DMA2_Ch1_5_DMAMUX_OVR_IRQn 1 */
+
+  /* USER CODE END DMA1_Ch4_7_DMA2_Ch1_5_DMAMUX_OVR_IRQn 1 */
+}
+
+/**
+  * @brief This function handles USART3 (combined with EXTI 24) + LPUART1 global interrupt (combined with EXTI lines 28).
+  */
+void USART3_LPUART1_IRQHandler(void)
+{
+  /* USER CODE BEGIN USART3_LPUART1_IRQn 0 */
+
+  /* USER CODE END USART3_LPUART1_IRQn 0 */
+  HAL_UART_IRQHandler(&huart3);
+  /* USER CODE BEGIN USART3_LPUART1_IRQn 1 */
+
+  /* USER CODE END USART3_LPUART1_IRQn 1 */
 }
 
 /**
